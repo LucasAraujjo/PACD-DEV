@@ -17,7 +17,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive"
 ]
 
-SPREADSHEET_NAME = "PACD_DADOS"
+SPREADSHEET_NAME = "PACD_DADOS_DEV"
 
 
 def get_google_credentials():
