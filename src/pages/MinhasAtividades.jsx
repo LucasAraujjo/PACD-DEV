@@ -347,18 +347,26 @@ const MinhasAtividades = () => {
     return null;
   };
 
-  const excluirRegistro = async (id, tipo) => {
+  const excluirRegistro = async (id, tipo, tipoAtividade = null) => {
     if (!confirm(`Tem certeza que deseja excluir este registro?`)) {
       return;
     }
 
     try {
+      // Montar payload baseado no tipo de exclusão
+      let payload = { id, tipo };
+
+      // Se for exclusão de Atividade, adicionar tipo_atividade
+      if (tipo === 'Atividade' && tipoAtividade) {
+        payload.tipo_atividade = tipoAtividade;
+      }
+
       const response = await fetch('/api/excluir_registro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id, tipo })
+        body: JSON.stringify(payload)
       });
 
       const result = await response.json();
@@ -604,7 +612,11 @@ const MinhasAtividades = () => {
                               </button>
                               <button
                                 className="botao-excluir"
-                                onClick={() => excluirRegistro(atividade.ID_ATIVIDADE, 'Atividade')}
+                                onClick={() => {
+                                  // Mapear tipo de atividade para nome da aba
+                                  const tipoAba = atividade.TIPO === 'Simulado' ? 'simulados' : 'questoes';
+                                  excluirRegistro(atividade.ID_ATIVIDADE, 'Atividade', tipoAba);
+                                }}
                                 title="Excluir atividade"
                               >
                                 🗑
@@ -613,7 +625,7 @@ const MinhasAtividades = () => {
                           ) : (
                             <button
                               className="botao-excluir"
-                              onClick={() => excluirRegistro(atividade.ID_ATIVIDADE, 'Redação')}
+                              onClick={() => excluirRegistro(atividade.ID_ATIVIDADE, 'Atividade', 'redacoes')}
                               title="Excluir redação"
                             >
                               🗑

@@ -37,7 +37,7 @@ def get_google_credentials():
     )
 
 
-def excluir_registro(planilha, aba_nome, id_valor):
+def excluir_registro(var_objPlanilha, var_strAba, var_intIdRegistro):
     """
     Remove fisicamente uma linha da planilha com base no ID
 
@@ -47,20 +47,44 @@ def excluir_registro(planilha, aba_nome, id_valor):
         id_coluna_index: índice da coluna do ID (1-based)
         id_valor: valor do ID a ser excluído
     """
-    print(f"🗑️  Iniciando exclusão em '{aba_nome}' para ID {id_valor}")
+    print(f"🗑️  Iniciando exclusão em '{var_strAba}' para ID {var_intIdRegistro}")
 
-    var_objAba = planilha.worksheet(aba_nome)
+    var_objAba = var_objPlanilha.worksheet(var_strAba)
     var_listaAba = var_objAba.get_all_values()
 
     for i, linha in enumerate(var_listaAba[1:], start=2):  # pula cabeçalho
-        if linha[0] == str(id_valor):
+        if linha[0] == str(var_intIdRegistro):
             print(f"❗ Registro encontrado na linha {i}, removendo...")
             var_objAba.delete_rows(i)
-            print("✅ Registro removido com sucesso!")
+            print("✅ Registro removido com sucesso!")       
             return True
 
     print("⚠️ Registro não encontrado")
     return False
+
+def excluir_atividade(var_objPlanilha, var_intIdRegistro, var_strTipoAtividade):
+    """
+    Exclui uma atividade e seu registro derivado (simulado, questões ou redação)
+    """
+    print("🧹 Exclusão completa de atividade iniciada")
+
+    # 1️⃣ Excluir da aba atividades
+    var_booAtividade = excluir_registro(var_objPlanilha, "atividades", var_intIdRegistro)
+    
+    if not var_booAtividade:
+        print("⚠️ Atividade não encontrada")
+        return False
+        
+    else: 
+        print(f"🗑️ Excluindo registro derivado em '{var_strTipoAtividade}'")
+        var_booDerivada = excluir_registro(var_objPlanilha, var_strTipoAtividade, var_intIdRegistro)
+        
+        if not var_booDerivada:
+            print("⚠️ Atividade não encontrada")
+            return False
+        else:
+            print("✅ Exclusão de atividade finalizada")
+            return True
 
 
 def processar_exclusao(dados):
@@ -78,7 +102,12 @@ def processar_exclusao(dados):
     var_intIdRegistro = dados.get("id")
 
     if var_strTipo == "Atividade":
-        return excluir_registro(var_objPlanilha, "atividades", var_intIdRegistro)
+        
+        var_strTipoAtividade = dados.get("tipo_atividade")
+        if not var_strTipoAtividade:
+            raise ValueError("tipo_atividade é obrigatório para exclusão de atividade")
+
+        return excluir_atividade(var_objPlanilha, var_intIdRegistro, var_strTipoAtividade)
 
     if var_strTipo == "Simulado":
         return excluir_registro(var_objPlanilha, "simulados", var_intIdRegistro)
@@ -162,10 +191,20 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
 
 if __name__ == '__main__':
+    
+    #Excluir Atividade Completa
     param = {
         "id": '17002',
-        "tipo": "Atividade"
+        "tipo": "Atividade",
+        "tipo_atividade": "simulados"
     }
 
+    processar_exclusao(param)
+    
+    #Excluir simulados/questoes
+    param = {
+            "tipo": "simulados",
+            "id": "SIM123456"
+            }
 
     processar_exclusao(param)
