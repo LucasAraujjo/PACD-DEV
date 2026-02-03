@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import ConfirmDialog from '../components/ConfirmDialog';
+import ThemeToggleButton from '../components/ThemeToggleButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/MinhasAtividades.css';
@@ -469,6 +470,7 @@ const MinhasAtividades = () => {
             <button onClick={carregarDados} className="botao-recarregar" disabled={isLoading}>
               {isLoading ? '🔄' : '↻'}
             </button>
+            <ThemeToggleButton />
           </div>
         </header>
 

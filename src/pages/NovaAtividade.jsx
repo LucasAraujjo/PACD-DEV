@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
+import ThemeToggleButton from '../components/ThemeToggleButton';
 import '../styles/NovaAtividade.css';
 
 const NovaAtividade = () => {
@@ -334,6 +335,7 @@ const NovaAtividade = () => {
             ☰
           </button>
           <h1 className="page-titulo">Nova Atividade 📝</h1>
+          <ThemeToggleButton />
         </header>
 
         {/* Main Content */}

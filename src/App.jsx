@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Login from './pages/Login';
 import NovaAtividade from './pages/NovaAtividade';
 import MinhasAtividades from './pages/MinhasAtividades';
@@ -27,30 +28,32 @@ function PrivateRoute({ children }) {
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/nova-atividade"
-            element={
-              <PrivateRoute>
-                <NovaAtividade />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/minhas-atividades"
-            element={
-              <PrivateRoute>
-                <MinhasAtividades />
-              </PrivateRoute>
-            }
-          />
-          <Route path="/" element={<Navigate to="/nova-atividade" />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/nova-atividade"
+              element={
+                <PrivateRoute>
+                  <NovaAtividade />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/minhas-atividades"
+              element={
+                <PrivateRoute>
+                  <MinhasAtividades />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/" element={<Navigate to="/nova-atividade" />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

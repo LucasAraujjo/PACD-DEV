@@ -1,5 +1,6 @@
 /* 🎨 PACD - Paleta de Cores Pastel Rosa */
-:root {
+:root,
+body[data-theme="light"] {
   /* Cores Principais */
   --primary: #F2A1B3; /* Rosa pastel - identidade visual */
   --primary-hover: #E88FA3; /* Rosa pastel mais escuro para hover */
@@ -35,6 +36,47 @@
   --shadow: 0 2px 8px 0 rgba(26, 26, 26, 0.08);
   --shadow-md: 0 4px 12px 0 rgba(26, 26, 26, 0.10);
   --shadow-lg: 0 8px 24px 0 rgba(26, 26, 26, 0.12);
+}
+
+/* 🌙 TEMA ESCURO
+   Regra: Branco → Preto | Preto → Rosa Pastel | Rosa → Cinza
+*/
+body[data-theme="dark"] {
+  /* Cores Principais - Rosa vira Cinza */
+  --primary: #B0B0B0; /* Cinza no tema escuro */
+  --primary-hover: #8C8C8C; /* Cinza mais escuro para hover */
+  --primary-light: #D4D4D4; /* Cinza mais claro */
+
+  /* Cores de Base - Preto vira Rosa Pastel */
+  --black: #F2A1B3; /* Rosa pastel no lugar do preto */
+  --gray: #666666; /* Cinza mais escuro para contraste */
+  --gray-dark: #888888; /* Cinza médio */
+  --gray-light: #555555; /* Cinza escuro */
+
+  /* Backgrounds - Branco vira Preto */
+  --background: #0A0A0A; /* Fundo principal preto */
+  --card-bg: #1A1A1A; /* Cards em preto mais claro */
+  --input-bg: #0F0F0F; /* Inputs em preto */
+
+  /* Textos - Invertidos para leitura em fundo escuro */
+  --text-primary: #FFFFFF; /* Texto principal branco */
+  --text-secondary: #B0B0B0; /* Texto secundário cinza claro */
+  --text-tertiary: #888888; /* Texto terciário cinza médio */
+
+  /* Bordas - Mais escuras */
+  --border: #2A2A2A; /* Borda padrão escura */
+  --border-light: #1F1F1F; /* Borda mais escura */
+
+  /* Estados - Adaptados */
+  --success: #4A9A6A; /* Verde mais escuro */
+  --error: #C24A5E; /* Vermelho mais escuro */
+  --warning: #D5A770; /* Amarelo mais escuro */
+
+  /* Sombras - Mais intensas para fundos escuros */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px 0 rgba(0, 0, 0, 0.6);
 }
 
 /* Reset Global */
