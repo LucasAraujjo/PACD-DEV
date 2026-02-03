@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { ThemeProvider } from './context/ThemeContext';
 import Login from './pages/Login';
 import NovaAtividade from './pages/NovaAtividade';
 import MinhasAtividades from './pages/MinhasAtividades';
@@ -15,7 +14,7 @@ function PrivateRoute({ children }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#FAF7F8',
+        backgroundColor: '#e6dae0',
         color: '#1A1A1A'
       }}>
         <p>Carregando...</p>
@@ -28,32 +27,30 @@ function PrivateRoute({ children }) {
 
 function App() {
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <Router>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/nova-atividade"
-              element={
-                <PrivateRoute>
-                  <NovaAtividade />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/minhas-atividades"
-              element={
-                <PrivateRoute>
-                  <MinhasAtividades />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/" element={<Navigate to="/nova-atividade" />} />
-          </Routes>
-        </Router>
-      </AuthProvider>
-    </ThemeProvider>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/nova-atividade"
+            element={
+              <PrivateRoute>
+                <NovaAtividade />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/minhas-atividades"
+            element={
+              <PrivateRoute>
+                <MinhasAtividades />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/" element={<Navigate to="/nova-atividade" />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

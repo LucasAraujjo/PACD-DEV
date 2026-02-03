@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import ConfirmDialog from '../components/ConfirmDialog';
-import ThemeToggleButton from '../components/ThemeToggleButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/MinhasAtividades.css';
@@ -13,6 +12,14 @@ const MinhasAtividades = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [erro, setErro] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Áreas do conhecimento
+  const areasConhecimento = [
+    'Humanas',
+    'Natureza',
+    'Matemática',
+    'Linguagens'
+  ];
 
   // Estados de filtro
   const [filtroCategoria, setFiltroCategoria] = useState('Exercícios'); // 'Exercícios' ou 'Redações'
@@ -470,7 +477,6 @@ const MinhasAtividades = () => {
             <button onClick={carregarDados} className="botao-recarregar" disabled={isLoading}>
               {isLoading ? '🔄' : '↻'}
             </button>
-            <ThemeToggleButton />
           </div>
         </header>
 
@@ -835,15 +841,20 @@ const MinhasAtividades = () => {
               <form onSubmit={submeterNovaEntrada} className="form-nova-entrada">
                 <div className="form-group">
                   <label htmlFor="area">Área *</label>
-                  <input
-                    type="text"
+                  <select
                     id="area"
                     name="area"
                     value={formularioNovaEntrada.area}
                     onChange={handleInputChange}
                     required
-                    placeholder="Ex: Linguagens"
-                  />
+                  >
+                    <option value="">Selecione a área</option>
+                    {areasConhecimento.map(area => (
+                      <option key={area} value={area}>
+                        {area}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 {atividadeSelecionada.TIPO !== 'Simulado' && (

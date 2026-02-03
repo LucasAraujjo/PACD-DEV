@@ -95,15 +95,25 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: var(--shadow-md);
-  padding: 2.5rem;
   width: 100%;
+  overflow: hidden;
 }
 
-.subtitulo {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  text-align: center;
+.card-header {
+  padding: 1.5rem 2rem;
+  background: rgba(242, 161, 179, 0.05);
+  border-bottom: 1px solid var(--border);
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.card-body {
+  padding: 2rem;
 }
 
 /* Mensagens */
@@ -264,16 +274,19 @@ body {
   }
 
   .card {
-    padding: 2rem 1.5rem;
     margin-top: 3.5rem;
   }
 
-  .titulo {
-    font-size: 1.625rem;
+  .card-header {
+    padding: 1rem 1.5rem;
   }
 
-  .subtitulo {
-    font-size: 0.9rem;
+  .card-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .card-body {
+    padding: 1.5rem;
   }
 
   .campo input,
@@ -308,18 +321,20 @@ body {
   }
 
   .card {
-    padding: 1.5rem 1rem;
     margin-top: 3.5rem;
     border-radius: 8px;
   }
 
-  .titulo {
-    font-size: 1.4rem;
+  .card-header {
+    padding: 1rem;
   }
 
-  .subtitulo {
-    font-size: 0.8rem;
-    margin-bottom: 1.5rem;
+  .card-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .card-body {
+    padding: 1rem;
   }
 
   .mensagem {
@@ -394,16 +409,19 @@ body {
   }
 
   .card {
-    padding: 1.25rem 0.875rem;
     margin-top: 3rem;
   }
 
-  .titulo {
-    font-size: 1.25rem;
+  .card-header {
+    padding: 0.875rem;
   }
 
-  .subtitulo {
-    font-size: 0.75rem;
+  .card-header h2 {
+    font-size: 1rem;
+  }
+
+  .card-body {
+    padding: 0.875rem;
   }
 
   .campo input,
