@@ -39,7 +39,7 @@ body[data-theme="light"] {
 }
 
 /* 🌙 TEMA ESCURO
-   Regra: Branco → Preto | Preto → Rosa Pastel | Rosa → Cinza
+   Regra: Branco → Preto | Preto → Rosa Pastel | Rosa → Cinza | Cinza → Preto
 */
 body[data-theme="dark"] {
   /* Cores Principais - Rosa vira Cinza */
@@ -49,9 +49,9 @@ body[data-theme="dark"] {
 
   /* Cores de Base - Preto vira Rosa Pastel */
   --black: #F2A1B3; /* Rosa pastel no lugar do preto */
-  --gray: #666666; /* Cinza mais escuro para contraste */
-  --gray-dark: #888888; /* Cinza médio */
-  --gray-light: #555555; /* Cinza escuro */
+  --gray: #0A0A0A; /* Cinza vira preto */
+  --gray-dark: #000000; /* Cinza escuro vira preto total */
+  --gray-light: #1A1A1A; /* Cinza claro vira preto suave */
 
   /* Backgrounds - Branco vira Preto */
   --background: #0A0A0A; /* Fundo principal preto */
@@ -60,8 +60,8 @@ body[data-theme="dark"] {
 
   /* Textos - Invertidos para leitura em fundo escuro */
   --text-primary: #FFFFFF; /* Texto principal branco */
-  --text-secondary: #B0B0B0; /* Texto secundário cinza claro */
-  --text-tertiary: #888888; /* Texto terciário cinza médio */
+  --text-secondary: #0A0A0A; /* Texto secundário preto (antes cinza) */
+  --text-tertiary: #1A1A1A; /* Texto terciário preto suave (antes cinza) */
 
   /* Bordas - Mais escuras */
   --border: #2A2A2A; /* Borda padrão escura */
