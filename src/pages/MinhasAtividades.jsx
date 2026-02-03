@@ -4,6 +4,7 @@ import ConfirmDialog from '../components/ConfirmDialog';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/MinhasAtividades.css';
+import pacdLogo from '../assets/PACD_LOGO.png';
 
 const MinhasAtividades = () => {
   const [atividades, setAtividades] = useState([]);
@@ -469,7 +470,11 @@ const MinhasAtividades = () => {
           >
             ☰
           </button>
-          <h1 className="page-titulo">Minhas Atividades 📋</h1>
+          <div className="page-titulo-com-logo">
+            <img src={pacdLogo} alt="PACD" className="page-logo" />
+            <span className="page-separator">|</span>
+            <h1 className="page-titulo">Minhas Atividades 📋</h1>
+          </div>
           <div className="header-actions">
             <span className="contador-atividades">
               {atividadesFiltradas.length} de {filtroCategoria === 'Exercícios' ? atividades.length : redacoes.length}

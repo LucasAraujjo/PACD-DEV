@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import '../styles/Login.css';
+import pacdLogo from '../assets/PACD_LOGO.png';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -51,7 +52,7 @@ const Login = () => {
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <h1 className="login-title">PACD</h1>
+          <img src={pacdLogo} alt="PACD" className="login-logo" />
           <p className="login-subtitle">Portal Ana Clara de Desempenho</p>
         </div>
 

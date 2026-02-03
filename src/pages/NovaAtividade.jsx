@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import '../styles/NovaAtividade.css';
+import pacdLogo from '../assets/PACD_LOGO.png';
 
 const NovaAtividade = () => {
   const [formData, setFormData] = useState({
@@ -333,7 +334,11 @@ const NovaAtividade = () => {
           >
             ☰
           </button>
-          <h1 className="page-titulo">Nova Atividade 📝</h1>
+          <div className="page-titulo-com-logo">
+            <img src={pacdLogo} alt="PACD" className="page-logo" />
+            <span className="page-separator">|</span>
+            <h1 className="page-titulo">Nova Atividade 📝</h1>
+          </div>
         </header>
 
         {/* Main Content */}

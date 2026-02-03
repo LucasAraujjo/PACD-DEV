@@ -62,12 +62,28 @@
   box-shadow: var(--shadow);
 }
 
+.page-titulo-com-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page-logo {
+  height: 40px;
+  width: auto;
+}
+
+.page-separator {
+  font-size: 1.75rem;
+  color: var(--primary);
+  font-weight: 300;
+}
+
 .page-titulo {
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--primary);
   margin: 0;
-  flex: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -746,7 +762,15 @@
     gap: 1rem;
   }
 
+  .page-logo {
+    height: 32px;
+  }
+
   .page-titulo {
+    font-size: 1.3rem;
+  }
+
+  .page-separator {
     font-size: 1.3rem;
   }
 
@@ -826,8 +850,20 @@
     padding: 0.75rem;
   }
 
+  .page-logo {
+    height: 28px;
+  }
+
   .page-titulo {
     font-size: 1.1rem;
+  }
+
+  .page-separator {
+    font-size: 1.1rem;
+  }
+
+  .page-titulo-com-logo {
+    gap: 0.75rem;
   }
 
   .botao-recarregar {

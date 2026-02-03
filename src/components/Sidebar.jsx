@@ -1,5 +1,6 @@
 import { useAuth } from '../context/AuthContext';
 import '../styles/Sidebar.css';
+import fotoPerfil from '../assets/foto_perfil.jpeg';
 
 const Sidebar = ({ isOpen, onClose }) => {
   const { user, logout } = useAuth();
@@ -25,11 +26,13 @@ const Sidebar = ({ isOpen, onClose }) => {
         </div>
 
         <div className="sidebar-user">
-          <div className="sidebar-user-avatar">
-            {user?.username?.charAt(0).toUpperCase() || 'A'}
-          </div>
+          <img
+            src={fotoPerfil}
+            alt="Foto de perfil"
+            className="sidebar-user-avatar"
+          />
           <div className="sidebar-user-info">
-            <p className="sidebar-user-name">{user?.username || 'Usuário'}</p>
+            <p className="sidebar-user-name">{user?.displayName || user?.username || 'Usuário'}</p>
             <p className="sidebar-user-role">Administrador</p>
           </div>
         </div>

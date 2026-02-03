@@ -31,7 +31,11 @@ export const AuthProvider = ({ children }) => {
 
   const login = (username, password) => {
     if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
-      const userData = { username, loginTime: new Date().toISOString() };
+      const userData = {
+        username,
+        displayName: 'Ana Clara',
+        loginTime: new Date().toISOString()
+      };
       setUser(userData);
       localStorage.setItem('pacd_user', JSON.stringify(userData));
       return { success: true };
