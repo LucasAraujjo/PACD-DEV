@@ -1,0 +1,76 @@
+/* 🎨 PACD - Paleta de Cores Pastel Rosa */
+:root {
+  /* Cores Principais */
+  --primary: #F2A1B3; /* Rosa pastel - identidade visual */
+  --primary-hover: #E88FA3; /* Rosa pastel mais escuro para hover */
+  --primary-light: #F7C3CF; /* Rosa pastel mais claro */
+
+  /* Cores de Base */
+  --black: #1A1A1A; /* Preto para componentes */
+  --gray: #B0B0B0; /* Cinza para detalhes */
+  --gray-dark: #8C8C8C; /* Cinza mais escuro */
+  --gray-light: #D4D4D4; /* Cinza mais claro */
+
+  /* Backgrounds */
+  --background: #FAF7F8; /* Fundo principal - branco levemente rosado */
+  --card-bg: #FFFFFF; /* Fundo dos cards - branco puro */
+  --input-bg: #F5F5F5; /* Fundo dos inputs - cinza muito claro */
+
+  /* Textos */
+  --text-primary: #1A1A1A; /* Texto principal - preto */
+  --text-secondary: #8C8C8C; /* Texto secundário - cinza */
+  --text-tertiary: #B0B0B0; /* Texto terciário - cinza mais claro */
+
+  /* Bordas */
+  --border: #E0E0E0; /* Borda padrão - cinza claro */
+  --border-light: #F0F0F0; /* Borda clara */
+
+  /* Estados */
+  --success: #6ECC9A; /* Verde suave para sucesso */
+  --error: #E88FA3; /* Rosa para erros (mantém identidade) */
+  --warning: #F5C790; /* Amarelo suave para avisos */
+
+  /* Sombras sutis */
+  --shadow-sm: 0 1px 2px 0 rgba(26, 26, 26, 0.05);
+  --shadow: 0 2px 8px 0 rgba(26, 26, 26, 0.08);
+  --shadow-md: 0 4px 12px 0 rgba(26, 26, 26, 0.10);
+  --shadow-lg: 0 8px 24px 0 rgba(26, 26, 26, 0.12);
+}
+
+/* Reset Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+/* Utilitários */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-rosa {
+  color: var(--primary);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-black {
+  background-color: var(--black);
+}

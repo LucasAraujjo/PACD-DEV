@@ -14,8 +14,8 @@ function PrivateRoute({ children }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#000000',
-        color: '#ffffff'
+        backgroundColor: '#FAF7F8',
+        color: '#1A1A1A'
       }}>
         <p>Carregando...</p>
       </div>

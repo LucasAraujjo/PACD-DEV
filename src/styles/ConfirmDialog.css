@@ -1,0 +1,144 @@
+/* Confirm Dialog - Tema Rosa Pastel Minimalista */
+.confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 26, 26, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.confirm-dialog {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  min-width: 400px;
+  max-width: 500px;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.confirm-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(242, 161, 179, 0.05);
+}
+
+.confirm-header h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.confirm-body {
+  padding: 2rem;
+}
+
+.confirm-body p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.confirm-btn-cancel,
+.confirm-btn-confirm {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.confirm-btn-cancel {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.confirm-btn-cancel:hover {
+  background: var(--card-bg);
+  border-color: var(--gray);
+}
+
+/* Botão Danger - Preto com texto Rosa */
+.confirm-btn-confirm {
+  background: var(--black);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.confirm-btn-confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  background: var(--primary);
+  color: var(--black);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .confirm-dialog {
+    min-width: 90vw;
+    max-width: 90vw;
+  }
+
+  .confirm-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .confirm-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .confirm-body {
+    padding: 1.5rem;
+  }
+
+  .confirm-actions {
+    padding: 1rem 1.5rem;
+    flex-direction: column-reverse;
+  }
+
+  .confirm-btn-cancel,
+  .confirm-btn-confirm {
+    width: 100%;
+  }
+}

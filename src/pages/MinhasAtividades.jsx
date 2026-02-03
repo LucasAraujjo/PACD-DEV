@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
+import ConfirmDialog from '../components/ConfirmDialog';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/MinhasAtividades.css';
 
 const MinhasAtividades = () => {
@@ -35,6 +38,14 @@ const MinhasAtividades = () => {
     comentarios: ''
   });
   const [enviandoNovaEntrada, setEnviandoNovaEntrada] = useState(false);
+
+  // Estados do diálogo de confirmação
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
+  const [confirmDialogData, setConfirmDialogData] = useState({
+    title: '',
+    message: '',
+    onConfirm: () => {}
+  });
 
   // Carregar atividades ao montar o componente
   useEffect(() => {
@@ -347,10 +358,19 @@ const MinhasAtividades = () => {
     return null;
   };
 
-  const excluirRegistro = async (id, tipo, tipoAtividade = null) => {
-    if (!confirm(`Tem certeza que deseja excluir este registro?`)) {
-      return;
-    }
+  const excluirRegistro = (id, tipo, tipoAtividade = null) => {
+    // Abrir diálogo de confirmação
+    setConfirmDialogData({
+      title: 'Confirmar Exclusão',
+      message: 'Tem certeza que deseja excluir este registro? Esta ação não pode ser desfeita.',
+      onConfirm: () => executarExclusao(id, tipo, tipoAtividade)
+    });
+    setConfirmDialogOpen(true);
+  };
+
+  const executarExclusao = async (id, tipo, tipoAtividade = null) => {
+    // Fechar diálogo
+    setConfirmDialogOpen(false);
 
     try {
       // Montar payload baseado no tipo de exclusão
@@ -372,7 +392,14 @@ const MinhasAtividades = () => {
       const result = await response.json();
 
       if (response.ok && result.success) {
-        alert('Registro excluído com sucesso!');
+        toast.success('Registro excluído com sucesso!', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
 
         // Recarregar os dados conforme o tipo
         if (tipo === 'Atividade') {
@@ -401,13 +428,28 @@ const MinhasAtividades = () => {
       }
     } catch (error) {
       console.error('Erro ao excluir registro:', error);
-      alert(`Erro ao excluir registro: ${error.message}`);
+      toast.error(`Erro ao excluir registro: ${error.message}`, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   };
 
   return (
     <>
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <ToastContainer />
+      <ConfirmDialog
+        isOpen={confirmDialogOpen}
+        title={confirmDialogData.title}
+        message={confirmDialogData.message}
+        onConfirm={confirmDialogData.onConfirm}
+        onCancel={() => setConfirmDialogOpen(false)}
+      />
 
       <div className="minhas-atividades-container">
         {/* Header Fixo */}
